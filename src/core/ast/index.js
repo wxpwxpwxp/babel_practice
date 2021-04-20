@@ -4,7 +4,11 @@ const traverse = require('@babel/traverse');
 const types = require('@babel/types');
 
 function compile(code) {
-  const ast = parser.parse(code);
+  const ast = parser.parse(code, {
+    sourceType: 'module'
+  });
+
+  console.dir(ast, {depth: null});
 
   traverse.default(ast, {
     CallExpression(path) {
